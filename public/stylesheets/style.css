@@ -343,11 +343,11 @@ align-items: center;
 margin: 20px;
 }
 
-.logo-image{
-height: 40px;
-width: 80px;
-
+.logo-image {
+  height: 60px;
+  width: 180px;
 }
+
 
 .logout{
 cursor: pointer;
