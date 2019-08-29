@@ -1,0 +1,551 @@
+
+.counter-section:first-of-type{
+  border-radius:10px 10px 0 0  !important;
+}
+.counter-section:last-of-type{
+  border-radius: 0 0 10px 10px !important;
+}
+/* defination of global variables of colors height and width */
+:root{
+--sidebar_bg_color:#8E66DA; /* color of the side bar variable*/
+--sidebar_bg_color:white; /* color of the side bar variable*/
+--border_bottom_color:#E31C79;/*defining the color of the bottom border*/
+--header_bg_color: #3B2F84; /*color of the header*/
+
+
+--very_small_container_width:20%; /*width of a very small container*/
+--small_container_width:48%; /* width of the small graph container*/
+--medium_container_width:65%; /*width of the small graph container*/
+--large_container_width:100%; /*width of the large sized graph container*/
+
+--small_container_height:28%; /*height of the container*/
+--large_container_height:58%; /*height of anyc ontainer that is larger than small*/
+
+--min_tile_height:280px; /*minimum height of the tile*/
+--min_tile_width:300px; /*minimum width of the tile*/
+--max_tile_height:432px; /*maximum  of the tile*/
+--graph_height:48%; /*defines the height of the graph*/
+
+--small_graph_height:350px;
+--large_graph_height:350px;
+
+}
+/* defination of global variables of colors height and width*/
+
+/* css for the graphs */
+.small .graph{
+height: var(--small_graph_height);
+max-height: var(--small_graph_height);
+/* min-height: var(--small_graph_height);
+
+min-width: var(--min_tile_width);
+width: var(--min_tile_width); */
+}
+
+.large .graph{
+max-height: var(--large_graph_height) !important;
+height: var(--large_graph_height) !important;
+}
+/* css for the graphs */
+
+/* generic display variables */
+
+/* make all elements have this property */
+*{
+/* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+box-sizing: border-box;
+}
+
+/* background color of the dashboard */
+/* it appears complicated because it is made to be compatible with older browsers */
+body{
+background: #f6f8f9; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover, #f6f8f9 0%, #d7dee3 76%, #f5f7f9 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, #f6f8f9 0%,#d7dee3 76%,#f5f7f9 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, #f6f8f9 0%,#d7dee3 76%,#f5f7f9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', endColorstr='#f5f7f9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+padding: 0px;
+margin: 0px;
+min-width: 600px;   
+}
+/* generic display variables */
+
+
+
+/* css for the general outline of the two columns */
+
+/* css for the outer wrapper of the dashboard it seperates the sidebar and main menu */
+.dashboard-wrapper{
+display: flex;
+flex-direction: row;
+flex-wrap: nowrap;
+}
+
+/* css for the  side bar */
+.side-menu{
+min-width:18%;
+height: 100%;
+}
+
+.side-bar{
+background-color:#282833;
+color: rgb(245, 243, 243) !important;
+min-width: 150px;
+width:18%;
+height: 100%;
+position:fixed;
+overflow: hidden /*test feaature*/;
+}
+
+.sidebar-title{
+margin-left: -2px;
+margin-top: 15px;
+padding:0 20px ;
+/* text-align: center; */
+font-weight: 900;
+/* color: var(--border_bottom_color); */
+color: var(--header_bg_color);
+font-size: 1.1em;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+.header-section{
+margin:35px 0;
+}
+
+.header-title{
+text-transform: capitalize;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: 900;
+font-size: 0.8em;
+padding:10px 20px ;
+color: #E31C79;
+}
+.header-content-item a{
+/* color: #383855;*/
+color:rgb(209, 197, 197);
+font-weight: 400px;
+font-family: Arial, Helvetica, sans-serif;
+
+}
+.header-content-item{
+padding:8px 20px ;
+}
+
+form{
+padding:8px 20px ;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+} 
+
+input{
+width: 80%;
+margin-bottom: 5px;
+border-radius: 4px;
+border:2px solid #383855;
+padding: 2px 4px;
+}
+
+input:focus{
+outline: none;
+border:2px solid #E31C79;
+}
+button{
+width: 40%;
+margin-left: 15%;
+border-radius: 5px;
+border:0.5px  solid #383855;
+background: #E31C79;
+height: 25px;
+cursor: pointer;
+transition: 700ms;
+}
+button:active{
+border:0.5px  solid #383855;
+background: rgb(148, 54, 98);
+transform: scale(1.01);
+}
+
+/* css for the main container of the graphs */
+.main-content{
+max-width: 82%;
+padding:0px 4% ;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-between;
+}
+
+/* css for the general outline of the two columns */
+
+
+
+/* css for the graph containers and boxes */
+.item{
+background-color: white;
+border-radius: 10px;
+margin:10px 5px ;
+min-width: var(--min_tile_width);
+min-height:  var(--min_tile_height);
+max-height: var(--max_tile_height);
+}
+
+
+
+.graphcontainer{
+padding: 15px;
+display: flex;
+flex-direction: column;
+flex-wrap: nowrap;
+}
+
+.title{
+min-height: 50% !important;
+padding: 2px;
+padding-bottom: 4px;
+width: 100%;
+border-bottom:1.7px var(--border_bottom_color) solid;
+}
+
+.large .title{
+text-align: center;
+}
+
+.title span.text{
+font-weight: 700;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* stylings for different sizes of containers */
+.very-small{
+width: var(--very_small_container_width);
+height: var(--small_container_height);
+}
+.small{
+width: var(--small_container_width);
+height: var(--small_container_height);
+}
+.medium{
+width: var(--medium_container_width);
+height: var(--large_container_height);
+}
+.large{
+width: var(--large_container_width);
+height: var(--large_container_height);
+}
+
+.half-height{
+max-height:150px !important;
+}
+/* stylings for different sizes of containers */
+
+/* css for the graph containers and boxes */
+
+/* set upper and lower boundary for the page */
+
+/* media queries to adjust sizes based on screen sizes */
+@media (min-width:1300px) and (max-width:1700px){
+.title span.text{
+font-size: 1.5em;
+}
+}
+@media (min-width:1700px){
+.title span.text{
+font-size: 1.7em;
+}
+}
+
+
+@media (max-width:685px){
+.large .title{
+text-align: left;
+}
+
+}
+
+@media (min-width:600px){
+
+body{
+overflow-x: hidden;
+}
+}
+@media (min-width:685px) and (max-width:1162px){
+.title{
+text-align: center !important;
+}
+}
+
+
+@media (max-width:1163px){
+.main-content{
+justify-content: center;
+}
+.small,.medium,.very-small{
+width: var(--large_container_width);
+height: var(--large_container_height);
+}
+.small .graph{
+max-height: var(--large_graph_height) !important;
+height: var(--large_graph_height) !important;
+}
+.sections{
+text-align: center;
+}
+
+}
+
+@media (max-width:1032px){
+.table{
+overflow-x: scroll;
+}
+}
+
+@media (max-width:900px){
+.sidebar-title{
+font-size: 1em;
+}
+}
+
+/* media queries to adjust sizes based on screen sizes */
+
+
+/* header styling */
+nav{
+width: 100%;
+height: 60px;
+}
+.header-wrapper{
+position: fixed;
+width: 100%;
+color: rgb(245, 243, 243);
+height: 60px;
+background: var(--header_bg_color);
+display: flex;
+flex-direction: row;
+flex-wrap: nowrap;
+justify-content: space-between;
+align-items: center;
+padding: 10px;
+z-index: 6;
+padding-right: 3%;
+}
+
+.info{
+display: flex;
+flex-flow: row nowrap;
+align-items: center;
+}
+
+.loggedin{
+margin: 20px;
+}
+
+.logo-image{
+height: 40px;
+width: 80px;
+
+}
+
+.logout{
+cursor: pointer;
+}
+
+.user{
+font-weight: bolder;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a{
+color: white;
+text-decoration: none;
+
+}
+/* header styling */
+
+
+/* tables styling */
+.table{
+font-size: 13px;
+display: flex;
+flex-direction: column;
+flex-wrap: nowrap;
+margin-top: 10px;
+}
+
+/* add a bold font for the first row */
+.tablerow:first-of-type{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: 600;
+}
+.tablerow{
+display: flex;
+flex-direction: row;
+justify-content:flex-start;
+flex-wrap: nowrap;
+font-weight: 400;
+}
+
+.tablerow:nth-of-type(2){
+background: rgb(214, 212, 212);
+}
+
+
+.tableitem{
+max-height: 570px !important;
+min-height: 570px !important;
+
+}
+
+.tablecol{
+margin: 0px 0px;
+}
+/* /// code snippet controlling the top 10 phones and cities section//// */
+
+.sections{
+display: flex;
+flex-direction: column;;
+flex-wrap: nowrap;
+}
+.bottom-padding{
+height: 30px;
+width: 100%;
+}
+
+.section-title{
+margin: 10px 0;
+font-weight: 900px;
+text-align: center;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.section-content-item{
+font-weight: 400;
+font-size: 0.6em;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* /// code snippet controlling the top 10 phones and cities section//// */
+
+/* section of code for the counter section */
+.counter-section:first-of-type{
+padding-top: 10px;
+margin-top: 10px;
+}
+.counter-section{
+display: flex;
+flex-direction: column;
+flex-wrap: nowrap;
+justify-content: space-around;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size: 0.7em;
+margin-top: 1.5px;
+font-weight: 520;
+color:#282833;  
+background-color: rgb(245, 243, 243) !important;
+}
+
+.counter-section-header{
+background: #E31C79;
+}
+.counter-section-content{
+display: flex;
+flex-direction: row;
+flex-wrap: nowrap;
+justify-content: flex-start;
+padding: 2px 15px;
+}
+
+/* progress bar */
+.full{
+height: 60px;
+padding: 2px 10px;
+}
+.progress-bar{
+
+height: 30px;
+border: 3px solid black;
+border-radius: 5px;
+padding: 0px;
+margin: 0px;
+width: 100%;
+}
+
+.progress{
+padding-top: 5px;
+text-align: center;
+border-radius: 5px;
+height: 100%;
+background-color: #E31C79;
+}
+
+/*new settings to align the contents of the counter*/
+.numbers-first-row,.numbers-sub-rows,.group-content{
+width:20%;
+min-width:78px;
+text-align:left;
+}
+.numbers-first-row-title{
+font-size:1.3em;
+}
+
+.group-content,.numbers-sub-rows-content{
+font-size: 1.2em;
+}
+
+.numbers-first-row-content h4{
+font-size:1.0em;
+padding-top:5px;
+padding-bottom:5px;
+margin:0px;
+}
+
+@media (min-width:1160px){
+.numbers-first-row-title{
+font-size: 0.95em;
+padding:0px;
+margin:0px;
+}
+.numbers-first-row-content h4{
+font-size:1.2em;
+padding-top:5px;
+padding-bottom:5px;
+margin:0px;
+}
+}
+
+/*test animations ;)*/
+@keyframes enlarge{
+from{
+margin-left: -400px;
+}
+to{
+margin-top:0px;
+}
+}
+@keyframes fade-in{
+from{
+opacity:0;
+}
+to{
+opacity: 1;
+}
+}
+
+.fadein{
+animation:fade-in 2s ease-in forwards;
+}
+.enlarge{
+animation:enlarge 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+/*test animations ;)*/
+
+/*new settings to align the contents of the counter*/
+
+
+
+/* progress bar */
+
+/* section of code for the counter section */

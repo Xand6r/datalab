@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://kit.fontawesome.com/58877336b3.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+  </head>
+
+  <body>
+
+  <nav>
+    <div class="header-wrapper">
+        <div class="logo">
+          <!-- carbon image -->
+          <img class="enlarge logo-image" src="/images/logo.svg" alt="DataLaboratory">
+        </div>
+        <div class="info">
+          <div class="loggedin">
+              <span class="user"><i style="padding:0px 6px;" class="fas fa-user"></i>xander</span>
+          </div>
+          <div class="logout">
+              <a title="logout of datalab" class="logout" href="/logout">
+                <i class="fas fa-2x fa-sign-out-alt"></i>
+              </a>
+          </div>
+        </div>
+    </div>
+  </nav>
+  <!-- header -->
+  <div class="dashboard-wrapper">
+    
+    <!-- compartment for the side menu -->
+    <div class="side-menu">
+        <div class="side-bar">
+          <div class="sidebar-title">
+            <i style="padding:0px 2px;" class="fas fa-tachometer-alt"></i>
+            Dashboard
+          </div>
+          <div class="header-section">
+            <div class="header-title">
+              COUNTRIES
+            </div>
+            <div class="header-content">
+              <div class="header-content-item"> 
+                <a class="fadein" href=""><i style="padding-right:7px;" class="fas fa-compass"></i> Nigeria</a>
+              </div>
+              <div class="fadein header-content-item"> 
+                <a href="#"><i style="padding-right:7px;" class="far fa-compass"></i> USA</a>
+              </div>
+              <div class="fadein header-content-item"> 
+                <a href="#"><i style="padding-right:7px;" class="fas fa-compass"></i> Japan</a>
+              </div>
+            </div>
+          </div>
+          <div class="header-section">
+            <div class="header-title">RESTRICTION</div>
+            <div class="header-content">
+              <div class="fadein header-content-item"> <a href="#"><i class="fas fa-suitcase"></i> Local</a></div>
+              <div class="fadein header-content-item"> <a href="#"><i class="fas fa-users"></i> Admin</a></div>
+            </div>
+          </div>
+          <div class="header-section">
+            <div class="header-title">
+              SEARCH 
+            </div>
+            <div class="header-content">
+              <div>
+                <form action="#" method = "GET">
+                  <input type="text" placeholder="user id e.g(00000000)" name = "clientid">
+                  <!-- <button type="submit" class="search-button">SEARCH</button> -->
+                  <button type="submit" class="search-button"><i style="color: white;" class="fas fa-search"></i></button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- comaprtment for the main content to be displayed on the dashboard -->
+    <div class="main-content">
+      
+        
+      <div class="large item">
+        <div class="graphcontainer">
+          <div class="title"> <span class="text">Users activity distribution</span> </div>
+          <div>
+            <div class="graph" id="line_top_x"></div>
+            <!-- graph division -->
+          </div>
+        </div>
+        
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['line']});
+          google.charts.setOnLoadCallback(drawlineChart);
+    
+          function drawlineChart() {
+      
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'Year');
+            data.addColumn('number', 'New users');
+            data.addColumn('number', 'Existing Users');
+            data.addColumn('number', 'Null users');
+      
+            data.addRows([
+              [1,  37.8, 80.8, 41.8],
+              [2,  30.9, 69.5, 32.4],
+              [3,  25.4,   57, 25.7],
+              [4,  11.7, 18.8, 10.5],
+              [5,  11.9, 17.6, 10.4],
+              [6,   8.8, 13.6,  7.7],
+              [7,   7.6, 12.3,  9.6],
+              [8,  12.3, 29.2, 10.6],
+              [9,  16.9, 42.9, 14.8],
+              [10, 12.8, 30.9, 11.6],
+              [11,  5.3,  7.9,  4.7],
+              [12,  6.6,  8.4,  5.2],
+            ]);
+      
+            var options = {
+              hAxis: {title: 'year', minValue: 0, maxValue: 15},
+              vAxis: {title: '% activity', minValue: 0, maxValue: 15},
+            };
+      
+            var chart = new google.charts.Line(document.getElementById('line_top_x'));
+      
+            chart.draw(data, google.charts.Line.convertOptions(options));
+          }
+        </script>
+
+      </div>
+
+      <div class="small item">
+          <div class="graphcontainer">
+            <div class="title"> <span class="text">Age agains hours spent online</span> </div>
+            <div>
+              <div class="graph" id="chart_div"></div>
+              <!-- graph division -->
+            </div>
+          </div>
+
+                   
+          <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawScatterChart);
+      
+            function drawScatterChart() {
+              var data = google.visualization.arrayToDataTable([
+                ['Age', 'hourse online'],
+                [ 18,      7],
+                [ 25,      5.5],
+                [ 30,     4],
+                [ 35,      8],
+                [ 40,      9],
+                [ 45,    7.7],
+                [ 50,    9],
+                [ 60,    12],
+              ]);
+      
+              var options = {
+                hAxis: {title: 'Age', minValue: 0, maxValue: 15},
+                vAxis: {title: 'hours', minValue: 0, maxValue: 15},
+                legend: 'none'
+              };
+      
+              var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+      
+              chart.draw(data, options);
+            }
+          </script>
+      </div>
+
+      <div class="small item">
+          <div class="graphcontainer">
+            <div class="title"> <span class="text">Company Performance</span> </div>
+            <div>
+              <div class="graph" id="dist_chart_div"></div>
+              <!-- graph division -->
+            </div>
+          </div>
+          
+          <script type="text/javascript">
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawDistChart);
+      
+            function drawDistChart() {
+              var data = google.visualization.arrayToDataTable([
+                ['Year', 'New customers', 'Existing Customers'],
+                ['2013',  1000,      400],
+                ['2014',  1170,      460],
+                ['2015',  660,       1120],
+                ['2016',  1030,      540]
+              ]);
+      
+              var options = {
+                title: 'Company Performance',
+                hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+                vAxis: {title:"Activity",minValue: 0}
+              };
+      
+              var chart = new google.visualization.AreaChart(document.getElementById('dist_chart_div'));
+              chart.draw(data, options);
+            }
+          </script>
+      </div>
+
+      <div class="medium item">
+          <div class="graphcontainer">
+            <div class="title"> <span class="text">Timeline of CEO's</span> </div>
+            <div style="margin-top:10%">
+                <div class="graph" id="timeline"></div>
+              <!-- graph division -->
+            </div>
+          </div>
+
+          <script type="text/javascript">
+            google.charts.load('current', {'packages':['timeline']});
+            google.charts.setOnLoadCallback(drawTChart);
+            function drawTChart() {
+              var container = document.getElementById('timeline');
+              var chart = new google.visualization.Timeline(container);
+              var dataTable = new google.visualization.DataTable();
+      
+              dataTable.addColumn({ type: 'string', id: 'President' });
+              dataTable.addColumn({ type: 'date', id: 'Start' });
+              dataTable.addColumn({ type: 'date', id: 'End' });
+              dataTable.addRows([
+                [ 'Washington', new Date(2010, 3, 30), new Date(2013, 2, 4) ],
+                [ 'Adams',      new Date(2013, 2, 4),  new Date(2015, 2, 4) ],
+                [ 'Jefferson',  new Date(2015, 2, 4),  new Date(2019, 2, 4) ]]);
+      
+              chart.draw(dataTable);
+            }
+          </script>
+
+      </div>
+
+      <div class="very-small item">
+          <div class="graphcontainer">
+            <div class="title"> <span class="text">Top Users</span> </div>
+            <div>
+                <div class="sections">
+                  <div class="section">
+                    <div class="section-title"></div>
+                    <div class="section-content">
+                        <div class="section-content-item" style="font-size: 20px;margin-bottom:4px;text-align:center">Alex-ander</div>
+                        <div class="section-content-item" style="font-size: 20px;margin-bottom:4px;text-align:center">Alex-ander</div>
+                        <div class="section-content-item" style="font-size: 20px;margin-bottom:4px;text-align:center">Alex-ander</div>
+                        <div class="section-content-item" style="font-size: 20px;margin-bottom:4px;text-align:center">Alex-ander</div>
+                        <div class="section-content-item" style="font-size: 20px;margin-bottom:4px;text-align:center">Alex-ander</div>
+                        <div class="section-content-item" style="font-size: 20px;margin-bottom:4px;text-align:center">Alex-ander</div>
+                        <div class="section-content-item" style="font-size: 20px;margin-bottom:4px;text-align:center">Alex-ander</div>
+                        <div class="section-content-item" style="font-size: 20px;margin-bottom:4px;text-align:center">Alex-ander</div>
+                        <div class="section-content-item" style="font-size: 20px;margin-bottom:4px;text-align:center">Alex-ander</div>
+                        <div class="section-content-item" style="font-size: 20px;margin-bottom:4px;text-align:center">Alex-ander</div>
+                    </div>
+                  </div>
+                </div>
+              <!-- graph division -->
+            </div>
+          </div>
+
+      </div>
+      <style>
+        .tablerow:nth-child(even){ 
+          background: rgb(206, 204, 204);
+        }
+        .table{
+          overflow-x: scroll;
+        }
+        .tablerow.header .tablecol{
+          font-weight: 600;
+        }
+        .tablerow{
+            min-width: 100%;
+            width: 1280px;  
+        }
+        .tablecol.wide{
+          width: 8%;
+          text-align:left;
+          padding:0 !important;
+          margin: 0 !important;
+          overflow: hidden;
+        }
+        .tablecol{
+          text-align: center;
+          width:6%;
+          min-width: 80px;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          font-family: Segoe,Segoe UI,Optima,Arial,sans-serif;
+          font-size: 12px;
+          font-weight: normal;
+        }
+      </style>
+   
+      <div class="small item">
+        <div class="graphcontainer">
+          <div class="title"><span class="text">Concentration Of Users</span></div>
+          <div>
+            <div class="graph" id="bar_chart_div"></div>
+          </div>
+        </div>
+        <script>
+            google.charts.load('current', {packages: ['corechart', 'bar']});
+            google.charts.setOnLoadCallback(drawBasic);
+            
+            function drawBasic() {
+              var data = google.visualization.arrayToDataTable([
+                ['City', '2010 Population',],
+                ['Lagos', 8175000],
+                ['Ibadan', 3792000],
+                ['Abuja', 2695000],
+                ['Port-harcout', 2099000],
+                ['Kaduna', 1526000]
+              ]);
+        
+              var options = {
+                chartArea: {width: '50%'},
+                hAxis: {
+                  minValue: 0
+                },
+                vAxis: {
+                },
+              };
+        
+              var chart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
+        
+              chart.draw(data, options);
+            }
+        </script>
+      </div>
+
+      <div class="small item">
+        <div class="graphcontainer">
+          <div class="title"><span class="text">User Age distribution for Today</span></div>
+          <div>
+            <div id="piechart" class="graph"></div>
+          </div>
+        </div>
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+    
+          function drawChart() {
+    
+            var data = google.visualization.arrayToDataTable([
+              ['Age', 'Count'],
+              ['18-25',     18],
+              ['25-32',      20],
+              ['32-40',  12],
+              ['40-49', 7],
+              ['50+',    5]
+            ]);
+    
+            var options = {
+            };
+    
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    
+            chart.draw(data, options);
+          }
+        </script>
+      </div>
+
+      <div class="large item">
+        <div class="graphcontainer">
+          <div class="title"><span class="text">
+              Correlation between life expectancy, fertility rate and population of some world countries (2010)
+          </span></div>
+          <div>
+            <div class="graph" id="series_chart_div"></div>
+          </div>
+        </div>
+
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawSeriesChart);
+    
+        function drawSeriesChart() {
+    
+          var data = google.visualization.arrayToDataTable([
+            ['ID', 'Life Expectancy', 'Fertility Rate', 'Region',     'Population'],
+            ['CAN',    80.66,              1.67,      'North America',  33739900],
+            ['DEU',    79.84,              1.36,      'Europe',         81902307],
+            ['DNK',    78.6,               1.84,      'Europe',         5523095],
+            ['EGY',    72.73,              2.78,      'Middle East',    79716203],
+            ['GBR',    80.05,              2,         'Europe',         61801570],
+            ['IRN',    72.49,              1.7,       'Middle East',    73137148],
+            ['IRQ',    68.09,              4.77,      'Middle East',    31090763],
+            ['ISR',    81.55,              2.96,      'Middle East',    7485600],
+            ['RUS',    68.6,               1.54,      'Europe',         141850000],
+            ['USA',    78.09,              2.05,      'North America',  307007000]
+          ]);
+    
+          var options = {
+            hAxis: {title: 'Life Expectancy'},
+            vAxis: {title: 'Fertility Rate'},
+            bubble: {textStyle: {fontSize: 11}}
+          };
+    
+          var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
+          chart.draw(data, options);
+        }
+        </script>
+      </div>
+
+      <div class="small item">
+        <div class="graphcontainer">
+          <div class="title"><span class="text">Heirachical order</span></div>
+          <div style="margin-top:10%">
+            <div id="heirachy_chart_div" class="graph"></div>
+          </div>
+        </div>
+            <script type="text/javascript">
+              google.charts.load('current', {packages:["orgchart"]});
+              google.charts.setOnLoadCallback(drawHChart);
+
+              function drawHChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Name');
+                data.addColumn('string', 'Manager');
+                data.addColumn('string', 'ToolTip');
+
+                // For each orgchart box, provide the name, manager, and tooltip to show.
+                data.addRows([
+                  [{v:'Mike', f:'Mike<div style="color:red; font-style:italic">President</div>'},
+                  '', 'The President'],
+                  [{v:'Jim', f:'Jim<div style="color:red; font-style:italic">Vice President</div>'},
+                  'Mike', 'VP Software'],
+                  [{v:'Jim', f:'Jim<div style="color:red; font-style:italic">Vice President</div>'},
+                  'Mike', 'VP Software'],
+                  [{v:'Jim', f:'Jim<div style="color:red; font-style:italic">Vice President</div>'},
+                  'Mike', 'VP Software'],
+                  ['Alice', 'Mike', '',],
+                  ['Bob', 'Jim', 'Bob Sponge'],
+                  ['Caroline', 'Bobby', '']
+                ]);
+
+                // Create the chart.
+                var chart = new google.visualization.OrgChart(document.getElementById('heirachy_chart_div'));
+                // Draw the chart, setting the allowHtml option to true for the tooltips.
+                chart.draw(data, {allowHtml:true});
+              }
+          </script>
+      </div>
+
+      <div class="small item">
+        <div class="graphcontainer">
+          <div class="title"><span class="text">Location Distribution Of Users Geographically</span></div>
+          <div>
+            <div id="donutchart" class="graph"></div>
+          </div>
+        </div>
+        <script type="text/javascript">
+          google.charts.load("current", {packages:["corechart"]});
+          google.charts.setOnLoadCallback(drawChart);
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['Location', 'Count'],
+              ['Lagos',     11],
+              ['Abuja',      2],
+              ['Ibadan',  2],
+              ['Port-hacourt', 2],
+              ['Kaduna',    7]
+            ]);
+    
+            var options = {
+              pieHole: 0.4,
+            };
+    
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
+          }
+        </script>
+      </div>
+      
+      <!-- hack to add a little padding to the bottom -->
+      <div class="bottom-padding">
+        
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+  <!-- Google Maps API -->
+  <!-- to be exported to a seperate file later -->
+
+  <!-- to be exported to a seperate file later -->
+  </body>
+</html>
+
