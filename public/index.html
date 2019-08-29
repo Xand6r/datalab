@@ -130,7 +130,11 @@
             var chart = new google.charts.Line(document.getElementById('line_top_x'));
       
             chart.draw(data, google.charts.Line.convertOptions(options));
+
           }
+          window.addEventListener("resize",function(e){
+            drawlineChart();
+          })
         </script>
 
       </div>
@@ -172,6 +176,10 @@
       
               chart.draw(data, options);
             }
+
+            window.addEventListener("resize",function(e){
+              drawScatterChart();
+            })
           </script>
       </div>
 
@@ -206,6 +214,10 @@
               var chart = new google.visualization.AreaChart(document.getElementById('dist_chart_div'));
               chart.draw(data, options);
             }
+            window.addEventListener("resize",function(e){
+              drawDistChart();
+            })
+
           </script>
       </div>
 
@@ -236,6 +248,9 @@
       
               chart.draw(dataTable);
             }
+            window.addEventListener("resize",function(e){
+              drawTChart();
+            })
           </script>
 
       </div>
@@ -334,6 +349,10 @@
         
               chart.draw(data, options);
             }
+
+            window.addEventListener("resize",function(e){
+              drawBasic();
+            })
         </script>
       </div>
 
@@ -346,9 +365,9 @@
         </div>
         <script type="text/javascript">
           google.charts.load('current', {'packages':['corechart']});
-          google.charts.setOnLoadCallback(drawChart);
+          google.charts.setOnLoadCallback(drawPChart);
     
-          function drawChart() {
+          function drawPChart() {
     
             var data = google.visualization.arrayToDataTable([
               ['Age', 'Count'],
@@ -366,6 +385,10 @@
     
             chart.draw(data, options);
           }
+
+          window.addEventListener("resize",function(e){
+            drawPChart();
+          })
         </script>
       </div>
 
@@ -384,7 +407,7 @@
           google.charts.setOnLoadCallback(drawSeriesChart);
     
         function drawSeriesChart() {
-    
+         
           var data = google.visualization.arrayToDataTable([
             ['ID', 'Life Expectancy', 'Fertility Rate', 'Region',     'Population'],
             ['CAN',    80.66,              1.67,      'North America',  33739900],
@@ -408,6 +431,10 @@
           var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
           chart.draw(data, options);
         }
+
+        window.addEventListener("resize",function(e){
+          drawSeriesChart();
+        })
         </script>
       </div>
 
@@ -448,6 +475,9 @@
                 // Draw the chart, setting the allowHtml option to true for the tooltips.
                 chart.draw(data, {allowHtml:true});
               }
+              window.addEventListener("resize",function(e){
+                drawHChart();
+              })
           </script>
       </div>
 
@@ -460,8 +490,8 @@
         </div>
         <script type="text/javascript">
           google.charts.load("current", {packages:["corechart"]});
-          google.charts.setOnLoadCallback(drawChart);
-          function drawChart() {
+          google.charts.setOnLoadCallback(drawDChart);
+          function drawDChart() {
             var data = google.visualization.arrayToDataTable([
               ['Location', 'Count'],
               ['Lagos',     11],
@@ -478,6 +508,10 @@
             var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
             chart.draw(data, options);
           }
+
+          window.addEventListener("resize",function(e){
+            drawDChart();
+          })
         </script>
       </div>
       
