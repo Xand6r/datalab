@@ -11,7 +11,7 @@ A data visualisation Platform to use web technologies made using google charts A
 |app.js| this is the main entry point for the application|
 
 ### running and setting up the application
-(1) firstly run `npm install` in the root folder of the project<hr/>
+(1) firstly run `npm install` in the root folder of the project, this will install all the dependencies of the server unto your system <hr/>
 (2) then run `node app.js` : it then brings out the port o which the server as been started <hr/>
 (3) open your browser and go to the adress http://localhost:'port' <hr/>
 note: 'port' should be replaced by the port which the server is set to run on
