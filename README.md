@@ -1,6 +1,6 @@
 # datalab
 A data visualisation Platform to use web technologies made using google charts API for visualisation and Pattern Observation in data.
-(vanilla HTML/CSS3) no frameworks were used in this project
+(vanilla HTML/CSS3) no front-end frameworks or librries were used in this project but express was used for the node backend.
 
 ### defination of folders heirachy
 | folders       | function          |
